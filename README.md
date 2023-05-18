@@ -51,17 +51,14 @@ After you're finished please remove all the comments and instructions!
 
 # 📖 [Vet Clinic] <a name="about-project"></a>
 
-> A relational database to create the initial data structure for a vet clinic. 
-
 **[Vet Clinic]** is a repository that allows you to create and insert data by using the schema and data.sql scripts. Also to make detailed queries by using the the queries.sql script. 
 
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
-
-> Describe the tech stack and include only the relevant sections that apply to your project.
-
+<!--
 <details>
+ 
   <summary>Client</summary>
   <ul>
     <li><a href="https://reactjs.org/">React.js</a></li>
@@ -74,7 +71,7 @@ After you're finished please remove all the comments and instructions!
     <li><a href="https://expressjs.com/">Express.js</a></li>
   </ul>
 </details>
-
+-->
 <details>
 <summary>Database</summary>
   <ul>
@@ -86,8 +83,6 @@ After you're finished please remove all the comments and instructions!
 
 ### Key Features <a name="key-features"></a>
 
-> Describe between 1-3 key features of the application.
-
 - **[Create animals table]**
 - **[Insert animals data]**
 - **[Specific required queries]**
@@ -98,17 +93,13 @@ After you're finished please remove all the comments and instructions!
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-> Add a link to your deployed project.
-
-- [Coming soon...](<replace-with-your-deployment-URL>)
+- Coming soon...
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 
 ## 💻 Getting Started <a name="getting-started"></a>
-
-> Describe how a new developer could make use of your project.
 
 To get a local copy up and running, follow these steps.
 
@@ -190,8 +181,6 @@ Example:
 <!-- AUTHORS -->
 
 ## 👥 Authors <a name="authors"></a>
-
-> Mention all of the collaborators of this project.
 
 👤 **Eduardo Villarreal**
 
