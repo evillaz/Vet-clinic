@@ -144,3 +144,40 @@ LEFT JOIN animals a ON o.id = a.owner_id
 GROUP BY o.full_name
 ORDER BY animal_count DESC
 LIMIT 1;
+
+-- **Join tables queries**
+
+-- **Who was the last animal seen by William Tatcher?**
+
+SELECT a.name AS "Last seen animal"
+FROM animals a
+JOIN visits v ON a.id = v.animal_id
+JOIN vets vt ON vt.id = v.vet_id
+WHERE vt.name = 'William Tatcher'
+ORDER BY v.visit_date DESC
+LIMIT 1;
+
+-- **How many different animals did Stephanie Mendez see?**
+
+SELECT COUNT(DISTINCT a.id)
+FROM animals a
+JOIN visits v ON a.id = v.animal_id
+JOIN vets vt ON vt.id = v.vet_id
+WHERE vt.name = 'Stephanie Mendez';
+
+-- **List all vets and their specialties, including vets with no specialties.**
+
+SELECT vt.name AS vet_name, COALESCE(s.name, 'No Specialty') AS specialty
+FROM vets vt
+LEFT JOIN specializations sp ON vt.id = sp.vet_id
+LEFT JOIN species s ON s.id = sp.species_id;
+
+-- **List all animals that visited Stephanie Mendez between April 1st and August 30th, 2020.**
+
+SELECT a.name AS animal_name
+FROM animals a
+JOIN visits v ON a.id = v.animal_id
+JOIN vets vt ON vt.id = v.vet_id
+WHERE vt.name = 'Stephanie Mendez'
+	AND v.visit_date BETWEEN '2020-04-01' AND '2020-08-30';
+

@@ -43,3 +43,123 @@ SET owner_id = CASE
     WHEN name IN ('Charmander', 'Squirtle', 'Blossom') THEN (SELECT id FROM owners WHERE full_name = 'Melody Pond')
     WHEN name IN ('Angemon', 'Boarmon') THEN (SELECT id FROM owners WHERE full_name = 'Dean Winchester')
   END;
+
+-- **Join tables data**
+-- SPECIALIZATIONS
+
+  INSERT INTO specializations (vet_id, species_id)
+SELECT v.id, s.id
+FROM vets v
+JOIN species s ON v.name = 'William Tatcher' AND s.name = 'pokemon';
+
+INSERT INTO specializations (vet_id, species_id)
+SELECT v.id, s.id
+FROM vets v
+JOIN species s ON v.name = 'Stephanie Mendez' AND (s.name = 'digimon' OR s.name = 'pokemon');
+
+INSERT INTO specializations (vet_id, species_id)
+SELECT v.id, s.id
+FROM vets v
+JOIN species s ON v.name = 'Jack Harkness' AND s.name = 'digimon';
+
+-- VISITS
+
+INSERT INTO visits (animal_id, vet_id, visit_date)
+SELECT a.id, v.id, '2020-05-24'
+FROM animals a
+JOIN vets v ON a.name = 'Agumon' AND v.name = 'William Tatcher';
+
+INSERT INTO visits (animal_id, vet_id, visit_date)
+SELECT a.id, v.id, '2020-07-22'
+FROM animals a
+JOIN vets v ON a.name = 'Agumon' AND v.name = 'Stephanie Mendez';
+
+INSERT INTO visits (animal_id, vet_id, visit_date)
+SELECT a.id, v.id, '2021-02-02'
+FROM animals a
+JOIN vets v ON a.name = 'Gabumon' AND v.name = 'Jack Harkness';
+
+INSERT INTO visits (animal_id, vet_id, visit_date)
+SELECT a.id, v.id, '2020-01-05'
+FROM animals a
+JOIN vets v ON a.name = 'Pikachu' AND v.name = 'Maisy Smith';
+
+INSERT INTO visits (animal_id, vet_id, visit_date)
+SELECT a.id, v.id, '2020-03-08'
+FROM animals a
+JOIN vets v ON a.name = 'Pikachu' AND v.name = 'Maisy Smith';
+
+INSERT INTO visits (animal_id, vet_id, visit_date)
+SELECT a.id, v.id, '2020-05-14'
+FROM animals a
+JOIN vets v ON a.name = 'Pikachu' AND v.name = 'Maisy Smith';
+
+INSERT INTO visits (animal_id, vet_id, visit_date)
+SELECT a.id, v.id, '2021-05-04'
+FROM animals a
+JOIN vets v ON a.name = 'Devimon' AND v.name = 'Stephanie Mendez';
+
+INSERT INTO visits (animal_id, vet_id, visit_date)
+SELECT a.id, v.id, '2021-02-24'
+FROM animals a
+JOIN vets v ON a.name = 'Charmander' AND v.name = 'Jack Harkness';
+
+INSERT INTO visits (animal_id, vet_id, visit_date)
+SELECT a.id, v.id, '2019-12-21'
+FROM animals a
+JOIN vets v ON a.name = 'Plantmon' AND v.name = 'Maisy Smith';
+
+INSERT INTO visits (animal_id, vet_id, visit_date)
+SELECT a.id, v.id, '2020-08-10'
+FROM animals a
+JOIN vets v ON a.name = 'Plantmon' AND v.name = 'William Tatcher';
+
+INSERT INTO visits (animal_id, vet_id, visit_date)
+SELECT a.id, v.id, '2021-04-07'
+FROM animals a
+JOIN vets v ON a.name = 'Plantmon' AND v.name = 'Maisy Smith';
+
+INSERT INTO visits (animal_id, vet_id, visit_date)
+SELECT a.id, v.id, '2019-09-29'
+FROM animals a
+JOIN vets v ON a.name = 'Squirtle' AND v.name = 'Stephanie Mendez';
+
+INSERT INTO visits (animal_id, vet_id, visit_date)
+SELECT a.id, v.id, '2020-10-03'
+FROM animals a
+JOIN vets v ON a.name = 'Angemon' AND v.name = 'Jack Harkness';
+
+INSERT INTO visits (animal_id, vet_id, visit_date)
+SELECT a.id, v.id, '2020-11-04'
+FROM animals a
+JOIN vets v ON a.name = 'Angemon' AND v.name = 'Jack Harkness';
+
+INSERT INTO visits (animal_id, vet_id, visit_date)
+SELECT a.id, v.id, '2019-01-24'
+FROM animals a
+JOIN vets v ON a.name = 'Boarmon' AND v.name = 'Maisy Smith';
+
+INSERT INTO visits (animal_id, vet_id, visit_date)
+SELECT a.id, v.id, '2019-05-15'
+FROM animals a
+JOIN vets v ON a.name = 'Boarmon' AND v.name = 'Maisy Smith';
+
+INSERT INTO visits (animal_id, vet_id, visit_date)
+SELECT a.id, v.id, '2020-02-27'
+FROM animals a
+JOIN vets v ON a.name = 'Boarmon' AND v.name = 'Maisy Smith';
+
+INSERT INTO visits (animal_id, vet_id, visit_date)
+SELECT a.id, v.id, '2020-08-03'
+FROM animals a
+JOIN vets v ON a.name = 'Boarmon' AND v.name = 'Maisy Smith';
+
+INSERT INTO visits (animal_id, vet_id, visit_date)
+SELECT a.id, v.id, '2020-05-24'
+FROM animals a
+JOIN vets v ON a.name = 'Blossom' AND v.name = 'Stephanie Mendez';
+
+INSERT INTO visits (animal_id, vet_id, visit_date)
+SELECT a.id, v.id, '2021-01-11'
+FROM animals a
+JOIN vets v ON a.name = 'Blossom' AND v.name = 'William Tatcher';
