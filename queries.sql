@@ -15,3 +15,88 @@ SELECT * FROM animals where neutered = true;
 SELECT * FROM animals WHERE name <> 'Gabumon';
 
 SELECT * FROM animals WHERE weight_kg BETWEEN 10.4 AND 17.3;
+
+SET SQL_SAFE_UPDATES = 0;
+-- TRANSITION TO UPDATE "species" COLUMN TO "unspecified"
+
+START TRANSACTION;
+
+UPDATE animals SET species = 'unspecified' WHERE id > 0;
+
+SELECT * FROM animals;
+
+ROLLBACK;
+
+SELECT * FROM animals;
+
+COMMIT;
+
+-- NEW TRANSACTION TO UPDATE "species" COLUMN
+
+START TRANSACTION;
+
+UPDATE animals SET species = 'digimon' WHERE name LIKE '%mon';
+
+UPDATE animals SET species = 'pokemon' WHERE species IS NULL;
+
+SELECT * FROM animals;
+
+COMMIT;
+
+SELECT * FROM animals;
+
+-- NEW TRANSACTION TO DELETE ALL ROWS
+
+START TRANSACTION;
+
+DELETE FROM animals;
+
+SELECT * FROM animals;
+
+ROLLBACK;
+
+SELECT * FROM animals;
+
+-- NEW TRANSACTION TO UPDATE WEIGHT VALUE TO FIX NEGATIVE VALUES
+
+START TRANSACTION;
+
+DELETE FROM animals WHERE date_of_birth > '2022-01-01';
+
+SELECT * FROM animals;
+
+SAVEPOINT mysavepoint;
+
+UPDATE animals SET weight_kg = (weight_kg * -1);
+
+ROLLBACK TO SAVEPOINT mysavepoint;
+
+UPDATE animals SET weight_kg = (weight_kg * -1) WHERE weight_kg < 0;
+
+SELECT * FROM animals;
+
+COMMIT;
+
+-- AGGREGATES FUNCTIONS AND GROUP BY
+
+SELECT COUNT(*) AS "Total animals" FROM animals;
+
+SELECT COUNT(*) AS "Total animals no escape"
+FROM animals
+WHERE escape_attempts = 0;
+
+SELECT AVG(weight_kg) AS "Average Weight"
+FROM animals;
+
+SELECT neutered, MAX(escape_attempts) AS "Max escape attempts"
+FROM animals
+GROUP BY neutered;
+
+SELECT species, MIN(weight_kg) AS "Min weight", MAX(weight_kg) AS "Max weight"
+FROM animals
+GROUP BY species;
+
+SELECT species, AVG(escape_attempts) AS "Average scape attempts"
+FROM animals
+WHERE date_of_birth BETWEEN '1990-01-01' AND '2000-12-31'
+GROUP BY species;
